@@ -16,8 +16,10 @@ for _, x in next, Scroller:GetChildren() do
     if MessageTextLabel then
         local Message = Gsub(MessageTextLabel.Text, "^%s+", "")
         
-        if Message:match(" ") and getgenv().antichatlag then
+        if Message:match(" ") then
+            if getgenv().antichatlag then
             x:Destroy()
+            end
         end
     end
 end
@@ -29,8 +31,10 @@ local ChatAdded = Scroller.ChildAdded:Connect(function(x)
         repeat task.wait() until not MessageTextLabel.Text:match("__+")
         local Message = Gsub(MessageTextLabel.Text, "^%s+", "")
         
-        if Message:match(" ") and getgenv().antichatlag then
+        if Message:match(" ") then
+            if getgenv().antichatlag then
             x:Destroy()
+            end
         end
     end
 end)
